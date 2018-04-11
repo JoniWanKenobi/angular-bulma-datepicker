@@ -1,3 +1,25 @@
+This is a date picker done with Angular 5, Bulma.css and Moment.js.
+
+It was done because I needed it and I liked the Bulma Calendar extension by wikiki, so I decided to kind of "port" that project to Angular.
+
+I wrote a tutorial on Medium as I made it from scratch (well, with Bulma Calendar HTML/CSS: 
+
+Key objectives were to made the date picker configurable in terms of date availability depending on business logic, owever complex. Right now, it's just configured as a booking system, i.e. to make past dates unavailable as well as dates further than one year in the future.
+
+To turn it in to a real configurable component, there are still a couple of steps needed:
+
+1-Create a ‘option’ object which will be an Input property and will contain all the configurations, including callback functions which can be passed from outside
+
+2-Adjust all the functions to work according to the options
+
+3-Let the component ‘emit’ the selected date, and maybe a configurable callback too
+
+4-Add extra visualization leveraging Bulma Calendar css
+
+You might want to fork it and contribute.
+
+
+
 # AngularBulmaDatepicker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.

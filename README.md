@@ -5,7 +5,7 @@ It was done because I needed it and I liked the Bulma Calendar extension by wiki
 I wrote a tutorial on Medium as I made it from scratch (well, with Bulma Calendar HTML/CSS: 
 https://medium.com/@chiodigiovanni1/how-to-build-a-datepicker-with-angular-bulma-and-moment-js-part-1-54afcd565c2
 
-Key objectives were to made the date picker configurable in terms of date availability depending on business logic, owever complex. Right now, it's just configured as a booking system, i.e. to make past dates unavailable as well as dates further than one year in the future.
+Key objectives were to made the date picker configurable in terms of date availability depending on business logic, however complex. Right now, it's just configured as a booking system, i.e. to make past dates unavailable as well as dates further than one year in the future.
 
 To turn it in to a real configurable component, there are still a couple of steps needed:
 

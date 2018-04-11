@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bulma/css/bulma.css",
+        "bulma-calendar.min.css",
         "styles.css"
       ],
       "scripts": [],

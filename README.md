@@ -7,6 +7,12 @@ https://medium.com/@chiodigiovanni1/how-to-build-a-datepicker-with-angular-bulma
 
 Key objectives were to made the date picker configurable in terms of date availability depending on business logic, however complex. Right now, it's just configured as a booking system, i.e. to make past dates unavailable as well as dates further than one year in the future.
 
+To change the configuration you can modify these two functions:
+
+canChangeNavDate: controls the logic of whether or not a month can be navigated to;
+
+isAvailable: controls the logic of whether or not a date is available for selection.
+
 To turn it in to a real configurable component, there are still a couple of steps needed:
 
 1-Create a ‘option’ object which will be an Input property and will contain all the configurations, including callback functions which can be passed from outside

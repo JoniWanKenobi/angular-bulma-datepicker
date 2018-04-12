@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { ParentComponent } from './parent/parent.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    ParentComponent
   ],
   imports: [
     BrowserModule

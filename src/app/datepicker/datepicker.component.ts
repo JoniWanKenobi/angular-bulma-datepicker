@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -8,7 +8,12 @@ import * as moment from 'moment';
 })
 export class DatepickerComponent implements OnInit {
 
-  localeString: string = 'it';
+  @Input() locale: string;
+  @Input() canChangeNavMonthLogic: any;
+  @Input() isAvailableLogic: any;
+
+  @Output() emitSelectedDate = new EventEmitter<any>();
+
   navDate: any;
   weekDaysHeaderArr: Array<string> = [];
   gridArr: Array<any> = [];
@@ -17,7 +22,7 @@ export class DatepickerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    moment.locale(this.localeString);
+    moment.locale(this.locale);
     this.navDate = moment();
     this.makeHeader();
     this.makeGrid();     
@@ -30,13 +35,13 @@ export class DatepickerComponent implements OnInit {
     }
   }
 
-  canChangeNavMonth(num: number){
-    const clonedDate = moment(this.navDate);
-    clonedDate.add(num, 'month');
-    const minDate = moment().add(-1, 'month');
-    const maxDate = moment().add(1, 'year');
-
-    return clonedDate.isBetween(minDate, maxDate);
+  canChangeNavMonth(num: number){    
+    if(this.canChangeNavMonthLogic){      
+      const clonedDate = moment(this.navDate);
+      return this.canChangeNavMonthLogic(num, clonedDate);      
+    } else {
+      return true;
+    }
   }
 
   makeHeader(){
@@ -68,12 +73,12 @@ export class DatepickerComponent implements OnInit {
   }
 
   isAvailable(num: number): boolean{
-    let dateToCheck = this.dateFromNum(num, this.navDate);
-    if(dateToCheck.isBefore(moment(), 'day')){
-        return false;
+    if(this.isAvailableLogic){
+      let dateToCheck = this.dateFromNum(num, this.navDate);
+      return this.isAvailableLogic(dateToCheck);
     } else {
-        return true;
-    }
+      return true;
+    }    
   }
 
   dateFromNum(num: number, referenceDate: any): any{
@@ -84,7 +89,8 @@ export class DatepickerComponent implements OnInit {
   selectDay(day: any){
     if(day.available){
       this.selectedDate = this.dateFromNum(day.value, this.navDate);
+      this.emitSelectedDate.emit(this.selectedDate);
     }
   }
-  
+
 }
